@@ -1,0 +1,89 @@
+body {
+  background-color: #F8F8F8;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  color: white;
+  font-family: 'Lato', sans-serif;
+  background-color: #77BDC9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 2.5em;
+  margin: 1em 0;
+}
+
+
+.account-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  font-size: 5em;
+  font-family: arial;
+  font-weight: bold;
+  color: #77BDC9;
+}
+
+.multiplier {
+  /*display: flex;
+  align-items: center;
+  justify-content: space-between;*/
+  padding: 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.multiplier li {
+  flex: 1;
+}
+
+.quantity {
+  border: 1px solid #77BDC9;
+  border-radius: 2px;
+  padding: 8px;
+  font-size: 16px;
+  outline: none;
+  width: 250px;
+}
+
+.Select-control{
+  border: 1px solid #77BDC9;
+  border-radius: 2px;
+  font-size: 16px;
+  max-width: 100%;
+}
+
+.add-coin-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-coin-button {
+  font-size: 3em;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  background-color: #77BDC9;
+  padding: 5px 30px;
+}
+
+.Select-clear-zone {
+  display: none;
+}
