@@ -1,7 +1,7 @@
 export default function reducer ( state = {
   coinSelectedName: '',
   coinSelectedValue: null,
-  quantityMultiplier: null,
+  coinQuantityMultiplier: null,
   userWallet: []
 }, action) {
   switch (action.type) {
@@ -15,7 +15,7 @@ export default function reducer ( state = {
       console.log('Quantity Multiplier Updating');
       return {
         ...state,
-        quantityMultiplier: action.payload
+        coinQuantityMultiplier: action.payload
       }
     }
     default:

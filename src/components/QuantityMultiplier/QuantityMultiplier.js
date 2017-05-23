@@ -38,10 +38,10 @@ class QuantityMultiplier extends Component {
 }
 
 const mapStateToProps = ({ coinWallet }) => {
-  const { quantityMultiplier } = coinWallet;
+  const { coinQuantityMultiplier } = coinWallet;
 
   return {
-    quantityMultiplier
+    coinQuantityMultiplier
   };
 };
 
