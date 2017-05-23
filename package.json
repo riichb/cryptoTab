@@ -20,7 +20,4 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   }
-  "homepage": {
-    "homepage": "https://riichb.github.io/cryptoTab"
-  }
 }

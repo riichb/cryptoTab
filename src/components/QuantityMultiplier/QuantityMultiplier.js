@@ -15,17 +15,19 @@ class QuantityMultiplier extends Component {
 
     })
   }
-  // componentDidMount(event) {
-  //   debugger;
-  //    const value = parseInt(event.target.value);
-  //
-  //    this.setState({quantity: value});
-  //    this.props.onChange(value);
-  //  }
+
+  handleInputChange(event) {
+    //  const value = event.target.value;
+    //  this.setState({
+    //    quantity: value
+    //  });
+   }
 
   render() {
     return (
-      <input type="number" name="quantity" onChange={this.onInput}/>
+      <label>
+        <input className="quantity" type="number" name="quantity" onChange={this.handleInputChange}/>
+      </label>
     )
   }
 }

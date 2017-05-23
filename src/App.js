@@ -1,22 +1,8 @@
 import React, { Component } from 'react';
-import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import Calculator from './components/Calculator/Calculator';
+import TotalAccountValue from './components/TotalAccountValue/TotalAccountValue';
 import './App.css';
-
-const getOptions = (input) => {
-  return fetch(`https://api.coinmarketcap.com/v1/ticker/`)
-    .then((response) => {
-      return response.json();
-    }).then((json) => {
-      json.forEach(function(obj) {
-        var coinName = obj.id;
-        obj.value = obj.id;
-        obj.label = coinName.charAt(0).toUpperCase() + coinName.slice(1);
-        obj.clearableValue = false;
-      });
-      return  { options: json }  ;
-    });
-}
 
 class App extends Component {
   constructor() {
@@ -26,7 +12,7 @@ class App extends Component {
       coin: [],
       items: [],
       selectValue: '',
-      filteredResults: [0]
+      filteredResults: 0
     };
 
      this.handleChange = this.handleChange.bind(this);
@@ -79,27 +65,10 @@ class App extends Component {
           <span className="title">CryptoTab</span>
         </header>
         <div className="crypto-calculator">
-          <div className="account-value">
-            ${this.state.filteredResults}
-          </div>
-          <ul className="multiplier">
-            <li>
-              <Select.Async
-                name="form-field-name"
-                loadOptions={getOptions}
-                onChange={this.handleChange}
-                value={this.state.selectValue}
-              />
-            </li>
-            <li>
-              X
-            </li>
-            <li>
-              <label>
-                <input className="quantity" type="number" name="quantity" onChange={this.handleInputChange}/>
-              </label>
-            </li>
-          </ul>
+          <TotalAccountValue
+            totalAccountValue={this.state.filteredResults}
+          />
+          <Calculator/>
           <div className="add-coin-container" >
             <button className="add-coin-button" onClick={this.handleClick}>
               Add Coin
