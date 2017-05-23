@@ -31,7 +31,7 @@ class QuantityMultiplier extends Component {
   render() {
     return (
       <label>
-        <input className="quantity" type="number" name="quantity" onChange={this.handleInputChange}/>
+        <input className="quantity" type="number" name="quantity" onChange={this.props.changeQuantityMultiplier}/>
       </label>
     )
   }

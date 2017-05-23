@@ -12,6 +12,7 @@ export default function reducer ( state = {
       }
     }
     case 'CHANGE_QUANTITY_MULTIPLIER': {
+      console.log('Quantity Multiplier Updating');
       return {
         ...state,
         quantityMultiplier: action.payload
