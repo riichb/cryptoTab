@@ -4,5 +4,5 @@ import { combineReducers } from 'redux';
 import coinWallet from './coinWallet.js';
 
 export default combineReducers({
-  coinWallet
+  coinWallet: coinWallet
 });
