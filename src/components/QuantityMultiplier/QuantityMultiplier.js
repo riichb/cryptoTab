@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+// add actions below
+import * as calculatorActions from '../actions/calculatorActions.js';
+
 class QuantityMultiplier extends Component {
   constructor(props) {
     super(props);
@@ -32,4 +37,19 @@ class QuantityMultiplier extends Component {
   }
 }
 
-export default QuantityMultiplier;
+const mapStateToProps = ({ coinWallet }) => {
+  const { quantityMultiplier } = coinWallet;
+
+  return {
+    quantityMultiplier
+  };
+};
+
+// Added this to prebundle before it's needed
+const bundledActionCreators = Object.assign({}, calculatorActions);
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(bundledActionCreators, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuantityMultiplier);
