@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 
-// import different reduces here
+// import different reducers here
+import coinWallet from './coinWallet.js';
 
 export default combineReducers({
-  // list reducers here
+  coinWallet
 });
