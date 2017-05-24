@@ -37,6 +37,7 @@ class CoinSearch extends Component {
       <Select.Async
         name="form-field-name"
         loadOptions={getOptions}
+        onChange={this.handleChange}
         value={this.state.selectValue}
       />
     )

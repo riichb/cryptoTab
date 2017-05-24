@@ -1,30 +1,11 @@
 import React, { Component } from 'react';
-import Select from 'react-select';
-import 'react-select/dist/react-select.css';
+import CoinMultiplier from './components/CoinMultiplier/CoinMultiplier';
 import './App.css';
-
-const getOptions = (input) => {
-  return fetch(`https://api.coinmarketcap.com/v1/ticker/`)
-    .then((response) => {
-      return response.json();
-    }).then((json) => {
-      json.forEach(function(obj) {
-        var coinName = obj.id;
-        obj.value = obj.id;
-        obj.label = coinName.charAt(0).toUpperCase() + coinName.slice(1);
-        obj.clearableValue = false;
-      });
-      return  { options: json }  ;
-    });
-}
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      quantity: '',
-      coin: [],
-      items: [],
       selectValue: '',
       filteredResults: [0]
     };
@@ -50,25 +31,15 @@ class App extends Component {
     });
   }
 
-  componentDidMount() {
-    fetch(`https://api.coinmarketcap.com/v1/ticker/`)
-      .then((result)=> {
-         result.json()
-       .then(json => {
-         this.setState({items: json})
-        });
-     });
-  }
-
   handleClick(event) {
     const coin = this.state.selectValue;
     const quantity = parseInt(this.state.quantity, 10)
     this.findCoin(coin, quantity);
   }
 
-  findCoin(id) {
+  findCoin(id, quantity) {
     const filtered = this.state.items.filter(currency=> currency.id === id);
-    const coinResult = filtered[0].price_usd;
+    const coinResult = filtered[0].price_usd * quantity;
     this.setState({filteredResults: coinResult});
   }
 
@@ -78,34 +49,15 @@ class App extends Component {
         <header>
           <span className="title">CryptoTab</span>
         </header>
+        <div className="account-value">
+          ${this.state.filteredResults}
+        </div>
         <div className="crypto-calculator">
-          <div className="account-value">
-            ${this.state.filteredResults}
-          </div>
-          <ul className="multiplier">
-            <li>
-              <Select.Async
-                name="form-field-name"
-                loadOptions={getOptions}
-                onChange={this.handleChange}
-                value={this.state.selectValue}
-              />
-            </li>
-            <li>
-              X
-            </li>
-            <li>
-              <label>
-                <input className="quantity" type="number" name="quantity" onChange={this.handleInputChange}/>
-              </label>
-            </li>
-          </ul>
+          <CoinMultiplier/>
           <div className="add-coin-container" >
             <button className="add-coin-button" onClick={this.handleClick}>
               Add Coin
             </button>
-          </div>
-          <div>
           </div>
         </div>
       </div>

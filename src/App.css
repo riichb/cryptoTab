@@ -1,18 +1,6 @@
 body {
   background-color: #F8F8F8;
 }
-
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 header {
   color: white;
   font-family: 'Lato', sans-serif;
@@ -24,7 +12,7 @@ header {
 
 .title {
   font-size: 2.5em;
-  margin: 1em 0;
+  margin: .2em 0;
 }
 
 
@@ -32,33 +20,58 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 300px;
+  height: 225px;
   font-size: 5em;
   font-family: arial;
   font-weight: bold;
   color: #77BDC9;
 }
 
-.multiplier {
-  /*display: flex;
-  align-items: center;
-  justify-content: space-between;*/
-  padding: 0;
-  max-width: 500px;
-  margin: 0 auto;
+.coin-multiplier {
+  display: flex;
+  justify-content: center;
 }
 
-.multiplier li {
-  flex: 1;
+.coin-multiplier > * {
+  flex-grow: 1 1 2;
+  width: 135px;
 }
 
-.quantity {
+.multiply-icon {
+  text-align: center;
+}
+
+
+.coin-quantity {
   border: 1px solid #77BDC9;
   border-radius: 2px;
-  padding: 8px;
-  font-size: 16px;
   outline: none;
-  width: 250px;
+}
+
+input[type='number'] {
+    -moz-appearance:textfield;
+    text-align: right;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;
+}
+
+:-ms-input-placeholder {
+   text-align: center;
 }
 
 .Select-control{
@@ -76,7 +89,7 @@ header {
 }
 
 .add-coin-button {
-  font-size: 3em;
+  font-size: 2em;
   color: white;
   border: none;
   border-radius: 3px;
