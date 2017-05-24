@@ -6,41 +6,51 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      selectValue: '',
-      filteredResults: [0]
+      coinQuantityMultiplier: null,
+      coinPrice: '',
+      coinSelected: '',
+      totalValue: [0]
     };
 
-     this.handleChange = this.handleChange.bind(this);
-     this.handleInputChange = this.handleInputChange.bind(this);
-     this.handleClick = this.handleClick.bind(this);
+    this.handleCoinMultiplication = this.handleCoinMultiplication.bind(this);
+    this.handleCoinQuantityChange = this.handleCoinQuantityChange.bind(this);
+    this.handleCoinSelectionChange= this.handleCoinSelectionChange.bind(this);
   }
 
-  handleInputChange(event) {
-     const value = event.target.value;
-
-     this.setState({
-       quantity: value
-     });
-   }
-
-
-  handleChange(event) {
-    const selectedCoinName = event.value;
+  handleCoinQuantityChange(e) {
+    let quantity = Number(e.target.value);
     this.setState({
-      selectValue: selectedCoinName
+      coinQuantityMultiplier: quantity,
     });
+
   }
 
-  handleClick(event) {
-    const coin = this.state.selectValue;
-    const quantity = parseInt(this.state.quantity, 10)
-    this.findCoin(coin, quantity);
+  handleCoinMultiplication(event) {
+    const price = this.state.coinPrice;
+    const quantity = this.state.coinQuantityMultiplier;
+    const multipliedPrice = price * quantity;
+    const totalPrice = this._addCommasForLargeNumbers(multipliedPrice);
+
+    this.setState( {
+      totalValue: totalPrice
+    })
   }
 
-  findCoin(id, quantity) {
-    const filtered = this.state.items.filter(currency=> currency.id === id);
-    const coinResult = filtered[0].price_usd * quantity;
-    this.setState({filteredResults: coinResult});
+  _addCommasForLargeNumbers(x) {
+    const parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+    return parts.join(".");
+  }
+
+  handleCoinSelectionChange(coin) {
+    const coinPrice = Number(coin.price_usd);
+    const coinSelected = coin.value;
+
+    this.setState({
+      coinPrice: coinPrice,
+      coinSelected: coinSelected,
+    });
   }
 
   render() {
@@ -50,12 +60,17 @@ class App extends Component {
           <span className="title">CryptoTab</span>
         </header>
         <div className="account-value">
-          ${this.state.filteredResults}
+          ${this.state.totalValue}
         </div>
         <div className="crypto-calculator">
-          <CoinMultiplier/>
+          <CoinMultiplier
+            handleCoinQuantityChange={this.handleCoinQuantityChange}
+            handleCoinSelectionChange={this.handleCoinSelectionChange}
+            coinPrice={this.state.coinPrice}
+            coinSelected={this.state.coinSelected}
+          />
           <div className="add-coin-container" >
-            <button className="add-coin-button" onClick={this.handleClick}>
+            <button className="add-coin-button" onClick={this.handleCoinMultiplication}>
               Add Coin
             </button>
           </div>

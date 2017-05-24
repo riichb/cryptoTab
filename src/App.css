@@ -28,8 +28,9 @@ header {
 }
 
 .current-price {
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  text-align: center;
+  position: absolute;
   color: #6F6F6F;
   margin-top: 5px;
   font-size: .55em;
@@ -41,12 +42,14 @@ header {
 }
 
 .coin-multiplier > * {
-  flex-grow: 1 1 2;
+  position: relative;
   width: 135px;
 }
 
 .multiply-icon {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 

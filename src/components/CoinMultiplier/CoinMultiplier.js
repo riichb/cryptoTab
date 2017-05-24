@@ -7,9 +7,13 @@ class CoinMultiplier extends Component {
   render() {
     return (
       <div className="coin-multiplier">
-        <CoinSearch/>
+        <CoinSearch
+          coinSelected={this.props.coinSelected}
+          coinPrice={this.props.coinPrice}
+          handleCoinSelectionChange={this.props.handleCoinSelectionChange}
+        />
         <MultiplyIcon/>
-        <CoinQuantity/>
+        <CoinQuantity handleCoinQuantityChange={this.props.handleCoinQuantityChange}/>
       </div>
     )
   }

@@ -17,34 +17,16 @@ const getOptions = (input) => {
 }
 
 class CoinSearch extends Component {
-  constructor() {
-    super();
-    this.state = {
-      selectValue: '',
-      currentPrice: ''
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    const selectedCoinName = event.value;
-    const currentPrice = `$` + event.price_usd;
-    this.setState({
-      selectValue: selectedCoinName,
-      currentPrice: currentPrice
-    });
-  }
-
   render() {
     return (
       <div>
         <Select.Async
           name="form-field-name"
           loadOptions={getOptions}
-          onChange={this.handleChange}
-          value={this.state.selectValue}
+          onChange={this.props.handleCoinSelectionChange}
+          value={this.props.coinSelected}
         />
-      <span className="current-price">{this.state.currentPrice}</span>
+      <span className="current-price">{this.props.coinPrice}</span>
       </div>
     )
   }
