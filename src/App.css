@@ -27,6 +27,14 @@ header {
   color: #77BDC9;
 }
 
+.current-price {
+  display: flex;
+  justify-content: center;
+  color: #6F6F6F;
+  margin-top: 5px;
+  font-size: .55em;
+}
+
 .coin-multiplier {
   display: flex;
   justify-content: center;
