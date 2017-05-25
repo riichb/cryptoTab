@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import CoinMultiplier from './components/CoinMultiplier/CoinMultiplier';
+import CoinList from './components/CoinList/CoinList';
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      coinsArray: [],
       coinQuantityMultiplier: null,
       coinPrice: '',
       coinSelected: '',
-      totalValue: [0]
+      coinSelectedObject: '',
+      finalWalletValue: ''
     };
 
-    this.handleCoinMultiplication = this.handleCoinMultiplication.bind(this);
+    this.handleAddingCoin = this.handleAddingCoin.bind(this);
     this.handleCoinQuantityChange = this.handleCoinQuantityChange.bind(this);
     this.handleCoinSelectionChange= this.handleCoinSelectionChange.bind(this);
   }
@@ -25,14 +28,33 @@ class App extends Component {
 
   }
 
-  handleCoinMultiplication(event) {
+  handleAddingCoin(event) {
+    this._handleMultiplication();
+    this.setState({
+      coinsArray: this.state.coinsArray,
+    });
+
+  }
+
+  _handleMultiplication() {
+    const coinSelectedObj = this.state.coinSelectedObject
     const price = this.state.coinPrice;
     const quantity = this.state.coinQuantityMultiplier;
     const multipliedPrice = price * quantity;
-    const totalPrice = this._addCommasForLargeNumbers(multipliedPrice);
+    // eslint-disable-next-line
+    const walletValue = Number(this.state.finalWalletValue.replace(/\,/g,'')) + multipliedPrice;
+    const finalWalletValue = this._addCommasForLargeNumbers(walletValue.toFixed(3))
+    const totalPrice = this._addCommasForLargeNumbers(multipliedPrice.toFixed(3));
+
+    Object.assign(coinSelectedObj, {
+      total_quantity: quantity,
+      total_value: totalPrice
+    });
+
+    this.state.coinsArray.push(coinSelectedObj);
 
     this.setState( {
-      totalValue: totalPrice
+      finalWalletValue: finalWalletValue
     })
   }
 
@@ -46,8 +68,10 @@ class App extends Component {
   handleCoinSelectionChange(coin) {
     const coinPrice = Number(coin.price_usd);
     const coinSelected = coin.value;
+    const coinObject = coin;
 
     this.setState({
+      coinSelectedObject: coinObject,
       coinPrice: coinPrice,
       coinSelected: coinSelected,
     });
@@ -60,7 +84,7 @@ class App extends Component {
           <span className="title">CryptoTab</span>
         </header>
         <div className="account-value">
-          ${this.state.totalValue}
+          ${this.state.finalWalletValue}
         </div>
         <div className="crypto-calculator">
           <CoinMultiplier
@@ -70,11 +94,15 @@ class App extends Component {
             coinSelected={this.state.coinSelected}
           />
           <div className="add-coin-container" >
-            <button className="add-coin-button" onClick={this.handleCoinMultiplication}>
+            <button className="add-coin-button" onClick={this.handleAddingCoin}>
               Add Coin
             </button>
           </div>
         </div>
+
+      <CoinList
+        coins={this.state.coinsArray}
+      />
       </div>
     );
   }

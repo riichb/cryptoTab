@@ -18,6 +18,13 @@ const getOptions = (input) => {
 
 class CoinSearch extends Component {
   render() {
+    let coinPrice = this.props.coinPrice;
+    let currentPrice = null;
+
+    if (coinPrice) {
+      currentPrice = <span className="current-price">${this.props.coinPrice}</span>
+    }
+
     return (
       <div>
         <Select.Async
@@ -26,7 +33,7 @@ class CoinSearch extends Component {
           onChange={this.props.handleCoinSelectionChange}
           value={this.props.coinSelected}
         />
-      <span className="current-price">{this.props.coinPrice}</span>
+        {currentPrice}
       </div>
     )
   }

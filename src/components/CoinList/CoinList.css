@@ -1,0 +1,31 @@
+li, ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.coin-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.coin-item {
+  list-style: none;
+}
+
+.coin-info {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.coin-info {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.coin-info li {
+  text-align: center;
+  width: 100px;
+}
