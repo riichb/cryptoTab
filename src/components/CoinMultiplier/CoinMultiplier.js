@@ -4,6 +4,10 @@ import CoinSearch from '../CoinSearch/CoinSearch';
 import MultiplyIcon from './MultiplyIcon'
 
 class CoinMultiplier extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="coin-multiplier">
@@ -13,7 +17,10 @@ class CoinMultiplier extends Component {
           handleCoinSelectionChange={this.props.handleCoinSelectionChange}
         />
         <MultiplyIcon/>
-        <CoinQuantity handleCoinQuantityChange={this.props.handleCoinQuantityChange}/>
+        <CoinQuantity
+          coinQuantityMultiplier={this.props.coinQuantityMultiplier}
+          handleCoinQuantityChange={this.props.handleCoinQuantityChange}
+        />
       </div>
     )
   }

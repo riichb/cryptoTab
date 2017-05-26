@@ -8,7 +8,7 @@ class App extends Component {
     super();
     this.state = {
       coinsArray: [],
-      coinQuantityMultiplier: null,
+      coinQuantityMultiplier: '',
       coinPrice: '',
       coinSelected: '',
       coinSelectedObject: '',
@@ -32,7 +32,10 @@ class App extends Component {
     this._handleMultiplication();
     this.setState({
       coinsArray: this.state.coinsArray,
-    });
+    }, this.setState({
+      coinQuantityMultiplier: '',
+      coinSelected: ''
+    }));
 
   }
 
@@ -88,6 +91,7 @@ class App extends Component {
         </div>
         <div className="crypto-calculator">
           <CoinMultiplier
+            coinQuantityMultiplier={this.state.coinQuantityMultiplier}
             handleCoinQuantityChange={this.handleCoinQuantityChange}
             handleCoinSelectionChange={this.handleCoinSelectionChange}
             coinPrice={this.state.coinPrice}
