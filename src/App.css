@@ -1,7 +1,8 @@
 body {
-  background-color: #F8F8F8;
+  background-color: white;
 }
-header {
+
+.title-header {
   color: white;
   font-family: 'Lato', sans-serif;
   background-color: #77BDC9;
@@ -15,13 +16,21 @@ header {
   margin: .2em 0;
 }
 
+.main-container {
+  display: flex;
+}
+.main-container > div {
+  flex-grow: 1;
+}
+
+
 
 .account-value {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 225px;
-  font-size: 5em;
+  font-size: 6vh;
   font-family: arial;
   font-weight: bold;
   color: #77BDC9;
@@ -61,7 +70,7 @@ header {
 
 input[type='number'] {
     -moz-appearance:textfield;
-    text-align: right;
+    text-align: center;
 }
 
 input::-webkit-outer-spin-button,
@@ -69,21 +78,6 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-::-webkit-input-placeholder {
-   text-align: center;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-   text-align: center;
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-   text-align: center;
-}
-
-:-ms-input-placeholder {
-   text-align: center;
-}
 
 .Select-control{
   border: 1px solid #77BDC9;
@@ -110,4 +104,11 @@ input::-webkit-inner-spin-button {
 
 .Select-clear-zone {
   display: none;
+}
+
+/* Desktops and laptops ----------- */
+@media only screen and (max-width : 1027px) {
+  .main-container {
+    flex-direction: column;
+  }
 }

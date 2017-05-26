@@ -4,6 +4,15 @@ li, ul{
   padding: 0;
 }
 
+.coin-list-container {
+  margin-top: 65px;
+}
+
+.coin-list-header li {
+  color: #77BDC9;
+  text-decoration: underline;
+}
+
 .coin-list {
   display: flex;
   flex-direction: column;
@@ -11,9 +20,19 @@ li, ul{
 
 .coin-item {
   list-style: none;
+  animation: slideIn .25s forwards;
 }
 
-.coin-info {
+@keyframes slideIn {
+  0% {
+    transform: translateX(900px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.coin-info, .coin-list-header {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;

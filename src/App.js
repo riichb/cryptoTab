@@ -34,7 +34,8 @@ class App extends Component {
       coinsArray: this.state.coinsArray,
     }, this.setState({
       coinQuantityMultiplier: '',
-      coinSelected: ''
+      coinSelected: '',
+      coinPrice: ''
     }));
 
   }
@@ -83,30 +84,34 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
+        <header className="title-header">
           <span className="title">CryptoTab</span>
         </header>
-        <div className="account-value">
-          ${this.state.finalWalletValue}
-        </div>
-        <div className="crypto-calculator">
-          <CoinMultiplier
-            coinQuantityMultiplier={this.state.coinQuantityMultiplier}
-            handleCoinQuantityChange={this.handleCoinQuantityChange}
-            handleCoinSelectionChange={this.handleCoinSelectionChange}
-            coinPrice={this.state.coinPrice}
-            coinSelected={this.state.coinSelected}
-          />
-          <div className="add-coin-container" >
-            <button className="add-coin-button" onClick={this.handleAddingCoin}>
-              Add Coin
-            </button>
+        <div className="main-container">
+          <div className="calculator">
+            <div className="account-value">
+              ${this.state.finalWalletValue}
+            </div>
+            <div className="crypto-input">
+              <CoinMultiplier
+                coinQuantityMultiplier={this.state.coinQuantityMultiplier}
+                handleCoinQuantityChange={this.handleCoinQuantityChange}
+                handleCoinSelectionChange={this.handleCoinSelectionChange}
+                coinPrice={this.state.coinPrice}
+                coinSelected={this.state.coinSelected}
+              />
+            <div className="add-coin-container" >
+              <button className="add-coin-button" onClick={this.handleAddingCoin}>
+                Add Coin
+              </button>
+            </div>
           </div>
         </div>
 
       <CoinList
         coins={this.state.coinsArray}
       />
+          </div>
       </div>
     );
   }
