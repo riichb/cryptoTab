@@ -4,9 +4,6 @@ import CoinSearch from '../CoinSearch/CoinSearch';
 import MultiplyIcon from './MultiplyIcon'
 
 class CoinMultiplier extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (

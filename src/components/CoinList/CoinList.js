@@ -4,7 +4,6 @@ import './CoinList.css';
 
 class CoinList extends Component {
   render() {
-          debugger;
     return (
       <div className="coin-list-container">
         <CoinListHeaders/>
