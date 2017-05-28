@@ -70,6 +70,7 @@ class App extends Component {
   }
 
   handleCoinSelectionChange(coin) {
+    debugger;
     const coinPrice = Number(coin.price_usd);
     const coinSelected = coin.value;
     const coinObject = coin;
