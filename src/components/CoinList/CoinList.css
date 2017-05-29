@@ -25,10 +25,10 @@ li, ul{
 
 @keyframes slideIn {
   0% {
-    transform: translateX(900px);
+    margin-left: 500px;
   }
   100% {
-    transform: translateX(0);
+    margin-left: 0;
   }
 }
 
