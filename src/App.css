@@ -110,3 +110,12 @@ input::-webkit-inner-spin-button {
     flex-direction: column;
   }
 }
+
+
+
+/* Desktops and laptops ----------- */
+@media only screen and (max-width : 800px) {
+  .coin-multiplier > * {
+    width: 100px;
+  }
+}
